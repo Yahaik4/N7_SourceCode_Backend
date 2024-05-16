@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoices",
+  "info": {
+    "singularName": "invoice",
+    "pluralName": "invoices",
+    "displayName": "Invoice",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product_names": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "invoices"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "totalPrice": {
+      "type": "biginteger"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "completed",
+        "cancelled"
+      ]
+    },
+    "deliveryAddress": {
+      "type": "string"
+    },
+    "staff": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::staff.staff",
+      "inversedBy": "invoices"
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "invoices"
+    }
+  }
+}

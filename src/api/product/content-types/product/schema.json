@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "productName": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "sellPrice": {
+      "type": "biginteger"
+    },
+    "originalPrice": {
+      "type": "biginteger"
+    },
+    "isHot": {
+      "type": "boolean"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "available",
+        "unavailable"
+      ]
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "ram": {
+      "type": "string"
+    },
+    "rom": {
+      "type": "string"
+    },
+    "pin": {
+      "type": "string"
+    },
+    "operationSystem": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "invoices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::invoice.invoice",
+      "mappedBy": "product_names"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
